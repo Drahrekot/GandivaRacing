@@ -1,4 +1,4 @@
-# 🏎️ Ferrari Club Website
+# 🏎️ Gandiva Racing Club Website
 
 A sleek, dark-themed club management website with a Ferrari red color scheme, powered by Google Apps Script and hosted on Netlify.
 
@@ -11,6 +11,7 @@ A sleek, dark-themed club management website with a Ferrari red color scheme, po
 - Users can change their own passwords after logging in
 - Admin can reset or change any user's password
 - Role-based access: **Admin** and **Member** roles
+
 
 ### 💰 Expense Tracking
 - Members can log and submit expenses
@@ -178,4 +179,4 @@ For issues or feature requests, contact the site admin or raise a ticket in the 
 
 ---
 
-*Built with ❤️ and 🏎️ Ferrari passion.*
+*Built with Passion.*
