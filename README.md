@@ -1,6 +1,6 @@
 # 🏎️ Gandiva Racing Club Website
 
-A sleek, dark-themed club management website with a Ferrari red color scheme, powered by Google Apps Script and hosted on Netlify.
+A sleek, dark-themed club management website with, powered by Google Apps Script and hosted on Netlify. Database hosted with Google sheets for easier access.
 
 ---
 
@@ -33,7 +33,7 @@ A sleek, dark-themed club management website with a Ferrari red color scheme, po
 - Secure backend — all sensitive logic lives in Apps Script
 
 ### 🎨 Design & Animations
-- Dark theme with Ferrari 🔴 red accent color scheme
+- Dark theme with 🔴 red accent color scheme
 - Smooth GSAP-powered animations
 - Fully **mobile-friendly** and responsive layout
 
@@ -112,10 +112,8 @@ A sleek, dark-themed club management website with a Ferrari red color scheme, po
 ## 🗂️ Project Structure
 
 ```
-📁 ferrari-club/
+📁 Gandiva-club/
 ├── 📄 index.html          — Main website entry point
-├── 🎨 style.css           — Dark theme + Ferrari red styles
-├── ⚡ main.js             — GSAP animations & frontend logic
 ├── 🔧 config.js           — Backend URL and app settings
 ├── 🖼️ assets/             — Images, icons, fonts
 └── 📄 README.md           — You are here!
