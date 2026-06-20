@@ -335,14 +335,14 @@ function setupSheets() {
 
   // Seed members (with roleType and password columns)
   const members = [
-    [1,'Drahrekot','drahrekot','Head of Electrical Systems & Chassis Design','Electrical Systems','DR','admin','GandivaAdmin2025!'],
-    [2,'Arjun Subramanian','arjun.s','Team Captain','Management','AS','member','GandivaTeam2025'],
-    [3,'Priya Venkatesh','priya.v','Powertrain Engineer','Powertrain','PV','member','GandivaTeam2025'],
-    [4,'Karthik Rajan','karthik.r','Chassis Lead','Chassis & Suspension','KR','member','GandivaTeam2025'],
-    [5,'Meghana Selvan','meghana.s','BMS Designer','Electrical Systems','MS','member','GandivaTeam2025'],
-    [6,'Roshan Pillai','roshan.p','CFD & Aerodynamics','Aerodynamics','RP','member','GandivaTeam2025'],
-    [7,'Divya Krishnan','divya.k','Embedded Systems','Electronics','DK','member','GandivaTeam2025'],
-    [8,'Vignesh Narayanan','vignesh.n','Mechanical Fabrication','Chassis & Suspension','VN','member','GandivaTeam2025'],
+    [1,'Drahrekot','drahrekot','Head of Electrical Systems & Chassis Design','Electrical Systems','DR','admin','PASSWORD!'],
+    [2,'Arjun Subramanian','arjun.s','Team Captain','Management','AS','member','PASSWORD'],
+    [3,'Priya Venkatesh','priya.v','Powertrain Engineer','Powertrain','PV','member','PASSWORD'],
+    [4,'Karthik Rajan','karthik.r','Chassis Lead','Chassis & Suspension','KR','member','PASSWORD'],
+    [5,'Meghana Selvan','meghana.s','BMS Designer','Electrical Systems','MS','member','PASSWORD'],
+    [6,'Roshan Pillai','roshan.p','CFD & Aerodynamics','Aerodynamics','RP','member','PASSWORD'],
+    [7,'Divya Krishnan','divya.k','Embedded Systems','Electronics','DK','member','PASSWORD'],
+    [8,'Vignesh Narayanan','vignesh.n','Mechanical Fabrication','Chassis & Suspension','VN','member','PASSWORD'],
   ];
   const mSheet = ss.getSheetByName('Members');
   members.forEach(r => mSheet.appendRow(r));
