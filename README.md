@@ -1,186 +1,181 @@
-# Gandiva Racing — Team Website
+# 🏎️ Ferrari Club Website
 
-**Student-led. Engineer-driven.**  
-Electric karting team competing at national level — website + internal team portal, all in a single HTML file with a Google Sheets backend.
-
----
-
-## What's in this repo
-
-| File | Purpose |
-|---|---|
-| `index.html` | The complete website (rename from `gandiva-final.html`) |
-| `Code.gs` | Google Apps Script backend — paste into Apps Script |
-| `SETUP-GUIDE.md` | Full step-by-step hosting instructions |
+A sleek, dark-themed club management website with a Ferrari red color scheme, powered by Google Apps Script and hosted on Netlify.
 
 ---
 
-## Features
+## 🚀 Features
 
-### Public website
-- **Home** — hero, ticker, about snapshot, results list
-- **About** — team philosophy, subsystems, stats
-- **Results** — full competition history
-- **Team** — member grid pulled live from Google Sheets
-- **Gallery** — photo grid with lightbox (admin upload)
-- **Contact** — enquiry form
+### 👥 User Management
+- Multi-user login system with username & password authentication
+- Users can change their own passwords after logging in
+- Admin can reset or change any user's password
+- Role-based access: **Admin** and **Member** roles
 
-### Team Portal (`/portal`)
-- **Member login** — individual username + password (stored server-side, never in HTML)
-- **Admin login** — full control panel
-- **Submit donation** — log payment for admin verification with UPI/bank ref
-- **Add expense** — buyers and admins can log team purchases
-- **Donation tracker** — progress bars, pending/verified/unpaid status
-- **Dashboard** — financial summary cards
-- **Change password** — any member can update their own password
-- **Admin panel:**
-  - Approve / reject donations
-  - Set verified donation amounts
-  - Upload / delete gallery photos
-  - Add / remove team members
-  - Assign role types (member / buyer / admin)
-  - Reset any member's password
+### 💰 Expense Tracking
+- Members can log and submit expenses
+- Admin can view, approve, or delete expense entries
+- All data stored in Google Sheets in real-time
 
-### Role types
-| Role | Can do |
-|---|---|
-| `member` | Submit donation, change password, view dashboard & donations |
-| `buyer` | Everything member can + log/view expenses |
-| `admin` | Everything + full admin panel |
+### 🎁 Donation Management
+- Members can submit donation status
+- Admin has a dedicated dashboard to **approve or reject** donations
+- Real-time status updates reflected instantly
 
----
+### 🖼️ Gallery Management
+- Admin can **upload** and **delete** gallery photos
+- Clean photo grid display for all members to view
 
-## Tech stack
+### 🔐 Secure Authentication
+- Server-side password validation via Google Apps Script
+- Session-based login (no passwords stored in the browser)
+- Secure backend — all sensitive logic lives in Apps Script
 
-| Layer | Technology | Cost |
-|---|---|---|
-| Frontend | Single HTML file (vanilla JS, GSAP animations) | Free |
-| Backend | Google Apps Script (REST API) | Free |
-| Database | Google Sheets | Free |
-| Hosting | Netlify (drag & drop) | Free |
-
-**Total monthly cost: ₹0**
+### 🎨 Design & Animations
+- Dark theme with Ferrari 🔴 red accent color scheme
+- Smooth GSAP-powered animations
+- Fully **mobile-friendly** and responsive layout
 
 ---
 
-## Quick setup (20 minutes)
+## 🛠️ Setup Guide
 
-### 1 — Google Sheet
-1. Go to [sheets.google.com](https://sheets.google.com) → create a blank sheet
-2. Name it `Gandiva Racing Data`
-3. Copy the Sheet ID from the URL:  
-   `docs.google.com/spreadsheets/d/`**`THIS_PART`**`/edit`
+### Step 1 — 📋 Set Up Google Sheets
 
-### 2 — Apps Script
-1. In the sheet: **Extensions → Apps Script**
-2. Delete everything, paste the entire contents of `Code.gs`
-3. Replace `PASTE_YOUR_SHEET_ID_HERE` with your Sheet ID
-4. **Save** (Ctrl+S)
-5. Select function `setupSheets` from the dropdown → click **▶ Run**
-6. Accept permissions when prompted
-7. Check the Execution Log — should say ✅ Setup complete
-
-### 3 — Deploy as Web App
-1. **Deploy → New deployment**
-2. Type: **Web app**
-3. Execute as: **Me** · Who has access: **Anyone**
-4. Click **Deploy** → copy the URL  
-   `https://script.google.com/macros/s/ABC.../exec`
-
-### 4 — Add URL to website
-1. Open `index.html` in any text editor
-2. Find: `const SCRIPT_URL = 'PASTE_YOUR_SCRIPT_URL_HERE';`
-3. Replace with your URL from step 3
-4. Save
-
-### 5 — Host on Netlify
-1. Go to [netlify.com](https://netlify.com) → sign up free
-2. **Add new site → Deploy manually**
-3. Drag and drop `index.html` into the upload box
-4. Your site is live at `something.netlify.app`
-5. Optional: rename under **Site settings → Change site name**
+1. Go to [Google Sheets](https://sheets.google.com) and create a new spreadsheet
+2. Create the following sheets (tabs) inside it:
+   - `Users` — stores usernames, hashed passwords, and roles
+   - `Expenses` — stores expense entries
+   - `Donations` — stores donation records
+   - `Gallery` — stores photo URLs
+3. Copy the **Spreadsheet ID** from the URL:
+   ```
+   https://docs.google.com/spreadsheets/d/YOUR_SPREADSHEET_ID/edit
+   ```
 
 ---
 
-## Default credentials
+### Step 2 — ⚙️ Set Up Google Apps Script
 
-### Member login
-- Username: any roster username (e.g. `arjun.s`, `drahrekot`)
-- Password: `GandivaTeam2025` (shared default until each member changes it)
-
-### Admin login  
-- Username: `admin`
-- Password: `GandivaAdmin2025!`
-
-> **Security note:** Passwords are stored in the Google Sheet and validated server-side. They are never embedded in the HTML source. Members can change their own password from the portal home screen.
-
-### Default member usernames
-| Name | Username | Role |
-|---|---|---|
-| Drahrekot | `drahrekot` | Member |
-| Arjun Subramanian | `arjun.s` | Admin |
-| Priya Venkatesh | `priya.v` | Member |
-| Karthik Rajan | `karthik.r` | Buyer |
-| Meghana Selvan | `meghana.s` | Member |
-| Roshan Pillai | `roshan.p` | Member |
-| Divya Krishnan | `divya.k` | Buyer |
-| Vignesh Narayanan | `vignesh.n` | Member |
+1. Go to [script.google.com](https://script.google.com) and create a **New Project**
+2. Paste the provided `Code.gs` backend script into the editor
+3. Replace the placeholder with your Spreadsheet ID:
+   ```js
+   const SHEET_ID = "YOUR_SPREADSHEET_ID";
+   ```
+4. Click **Deploy → New Deployment**
+   - Type: **Web App**
+   - Execute as: **Me**
+   - Who has access: **Anyone**
+5. Click **Deploy** and copy the **Web App URL** — you'll need this next
 
 ---
 
-## Changing passwords
+### Step 3 — 🌐 Configure the Frontend
 
-### Admin password
-Edit `Code.gs` line:
-```js
-const ADMIN_PASS = 'GandivaAdmin2025!';
+1. Open `config.js` (or the relevant config section in `index.html`)
+2. Paste your Apps Script Web App URL:
+   ```js
+   const BACKEND_URL = "https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec";
+   ```
+3. Save the file
+
+---
+
+### Step 4 — ☁️ Deploy to Netlify
+
+1. Push your frontend files to a **GitHub repository**
+2. Go to [netlify.com](https://netlify.com) and click **Add new site → Import from Git**
+3. Connect your GitHub repo
+4. Set build settings:
+   - Build command: *(leave empty if no build step)*
+   - Publish directory: `/` or `public/`
+5. Click **Deploy Site** 🎉
+6. Your site will be live at `https://your-site-name.netlify.app`
+
+---
+
+### Step 5 — 👤 Create the First Admin User
+
+1. Open your Google Sheet → `Users` tab
+2. Manually add the first row:
+
+   | Username | Password (hashed) | Role  |
+   |----------|-------------------|-------|
+   | admin    | *(set via script)*| admin |
+
+3. Run the `createAdminUser` function in Apps Script to set the initial admin password securely
+
+---
+
+## 🗂️ Project Structure
+
 ```
-Then redeploy: **Deploy → Manage deployments → Edit → New version → Deploy**
-
-### Member default password
-Edit `Code.gs` line:
-```js
-const validPw = storedPw || 'GandivaTeam2025';
+📁 ferrari-club/
+├── 📄 index.html          — Main website entry point
+├── 🎨 style.css           — Dark theme + Ferrari red styles
+├── ⚡ main.js             — GSAP animations & frontend logic
+├── 🔧 config.js           — Backend URL and app settings
+├── 🖼️ assets/             — Images, icons, fonts
+└── 📄 README.md           — You are here!
 ```
 
-### Individual member password
-- **Member themselves:** Portal → Home → Change Password
-- **Admin:** Portal → Admin tab → Reset Member Password
+---
+
+## 🔑 Default Admin Access
+
+| Field    | Value          |
+|----------|----------------|
+| Username | `admin`        |
+| Password | *(set on first run)* |
+| Role     | `Admin`        |
+
+> ⚠️ **Change the default admin password immediately after first login!**
 
 ---
 
-## Updating the site
+## 📱 Browser & Device Support
 
-**If you edit `index.html`:**  
-Go to Netlify → Deploys → drag-drop the new file. Updates in ~10 seconds.
-
-**If you edit `Code.gs`:**  
-Apps Script → Deploy → Manage deployments → Edit → Version: New version → Deploy.  
-*(The URL stays the same — no need to update the HTML)*
-
----
-
-## Troubleshooting
-
-**"Backend error" on login:**  
-Open the Script URL directly in a browser — it should return `{"error":"No action"}`. If it 404s, redeploy the Web App.
-
-**Member can't log in:**  
-Check spelling of username in the Members sheet. Admin can see/fix it from the Admin panel.
-
-**Donations not showing:**  
-Hit **↻ Refresh** in the dashboard, or reload the page. Data loads fresh each session.
-
-**Images not loading in gallery:**  
-Photos are stored as base64 in the Sheet — fine for up to ~50 photos. For larger galleries, link to Google Drive public image URLs instead.
+| Platform | Support |
+|----------|---------|
+| 💻 Desktop (Chrome, Firefox, Edge) | ✅ Full |
+| 📱 Mobile (iOS & Android)          | ✅ Full |
+| 🗂️ Tablet                          | ✅ Full |
 
 ---
 
-## Competitions
+## 🧰 Tech Stack
 
-- **EKVC** — Electric Kart Varsity Championship
-- **GKDC** — Go Kart Design Challenge
+| Layer      | Technology              |
+|------------|-------------------------|
+| 🎨 Frontend | HTML, CSS, JavaScript   |
+| ✨ Animations | GSAP                  |
+| ⚙️ Backend  | Google Apps Script      |
+| 🗄️ Database | Google Sheets           |
+| ☁️ Hosting  | Netlify                 |
 
 ---
 
-*Gandiva Racing · Coimbatore · Est. 2022*
+## 🆘 Troubleshooting
+
+**❌ Login not working?**
+→ Check that your Apps Script is deployed as a Web App with access set to *"Anyone"*
+
+**❌ Data not updating?**
+→ Re-deploy the Apps Script (every code change needs a new deployment)
+
+**❌ CORS errors in the browser console?**
+→ Make sure the Apps Script returns proper JSON with `ContentService`
+
+**❌ Site not loading on Netlify?**
+→ Check that the `BACKEND_URL` in `config.js` is correct and the script is deployed
+
+---
+
+## 📬 Support
+
+For issues or feature requests, contact the site admin or raise a ticket in the project repository.
+
+---
+
+*Built with ❤️ and 🏎️ Ferrari passion.*
