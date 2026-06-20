@@ -4,6 +4,10 @@ A sleek, dark-themed club management website with, powered by Google Apps Script
 
 ---
 
+## ✨ Demo
+[Live showcase site](https://frabjous-cajeta-89cb10.netlify.app/)
+
+
 ## 🚀 Features
 
 ### 👥 User Management
