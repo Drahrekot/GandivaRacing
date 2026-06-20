@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Gandiva Racing — SKCET EV Karting</title>
-<meta name="description" content="Gandiva Racing is SKCET's competitive electric karting team — engineering EV performance from first principles.">
+<title>Gandiva Racing — EV Karting Team</title>
+<meta name="description" content="Gandiva Racing — student-led, engineer-driven electric karting team. Engineering EV performance from first principles.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -60,36 +60,67 @@ img{max-width:100%;height:auto;display:block}
 ::-webkit-scrollbar-thumb{background:var(--red);border-radius:10px}
 
 /* ═══════════════════════════════════════════
-   NAV — Mobile First
+   NAV — dvdrod.com style: logo left · links centre · portal right
    ═══════════════════════════════════════════ */
 #nav{
   position:fixed;top:0;left:0;right:0;z-index:900;
   height:var(--nav-h);
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 1rem;
-  transition:background .5s cubic-bezier(.4,0,.2,1),backdrop-filter .5s,box-shadow .5s;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 1.25rem;
+  transition:background .5s cubic-bezier(.4,0,.2,1),backdrop-filter .5s,border-color .5s;
+  border-bottom:1px solid transparent;
 }
 #nav.blur{
   background:var(--glass);
-  backdrop-filter:blur(32px) saturate(200%);-webkit-backdrop-filter:blur(32px) saturate(200%);
-  border-bottom:1px solid var(--border);
-  box-shadow:0 4px 30px rgba(0,0,0,.3);
+  backdrop-filter:blur(28px) saturate(200%);-webkit-backdrop-filter:blur(28px) saturate(200%);
+  border-bottom-color:var(--border);
 }
+/* Left: logo */
 .nav-logo{
-  font-family:var(--font-display);font-size:1.3rem;letter-spacing:.08em;
+  font-family:var(--font-display);font-size:1.1rem;letter-spacing:.1em;
   cursor:pointer;line-height:1;
-  background:linear-gradient(135deg,#fff 30%,var(--red));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  color:var(--text);
+  display:flex;align-items:center;gap:.5rem;
+  }
+
+.nav-logo .logo-dot{
+  width:7px;height:7px;border-radius:50%;background:var(--red);
+  display:inline-block;flex-shrink:0;
+  box-shadow:0 0 8px var(--red-a40);
 }
-.nav-right{display:flex;align-items:center;gap:.6rem}
-.nav-links{display:none}
+/* Centre: links */
+.nav-centre{
+  display:none;
+  align-items:center;gap:.15rem;
+  background:rgba(255,255,255,.04);
+  border:1px solid var(--border);
+  border-radius:999px;
+  padding:4px 6px;
+}
+.nav-centre a{
+  font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;font-weight:500;
+  color:var(--text2);
+  padding:5px 13px;border-radius:999px;
+  transition:background .25s,color .25s;
+  white-space:nowrap;
+}
+.nav-centre a:hover{color:var(--text);background:rgba(255,255,255,.07)}
+.nav-centre a.active{color:var(--text);background:rgba(255,255,255,.1)}
+/* Right: portal + ham */
+.nav-right{display:flex;align-items:center;gap:.5rem;margin-left:auto}
 .nav-portal-btn{
-  font-family:var(--font-body);font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500;
+  font-family:var(--font-body);font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;
   color:var(--red);border:1px solid var(--red-a40);
-  padding:6px 12px;border-radius:var(--radius-sm);
+  padding:6px 14px;border-radius:999px;
   transition:all .3s cubic-bezier(.4,0,.2,1);
+  display:flex;align-items:center;gap:.35rem;
 }
-.nav-portal-btn:hover{background:var(--red);color:#fff;box-shadow:0 0 20px var(--red-glow)}
+.nav-portal-btn::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--red);display:inline-block;animation:pulse-dot 2s infinite}
+@keyframes pulse-dot{0%,100%{opacity:1}50%{opacity:.3}}
+.nav-portal-btn:hover{background:var(--red);color:#fff;box-shadow:0 0 16px var(--red-glow)}
+.nav-portal-btn:hover::before{background:#fff}
 #ham{display:flex;flex-direction:column;gap:5px;padding:6px;width:36px;cursor:pointer}
 #ham span{height:1.5px;background:var(--text);transition:.4s cubic-bezier(.77,0,.175,1);transform-origin:center;border-radius:2px}
 #ham.x span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
@@ -97,11 +128,8 @@ img{max-width:100%;height:auto;display:block}
 #ham.x span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
 
 @media(min-width:860px){
-  #nav{padding:0 2.5rem}
-  .nav-logo{font-size:1.55rem}
-  .nav-links{display:flex;gap:1.75rem;align-items:center}
-  .nav-links a{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text2);transition:color .3s,text-shadow .3s}
-  .nav-links a:hover,.nav-links a.active{color:var(--text);text-shadow:0 0 12px var(--red-glow)}
+  #nav{padding:0 2.5rem;justify-content:space-between}
+  .nav-centre{display:flex;position:absolute;left:50%;transform:translateX(-50%)}
   #ham{display:none}
 }
 
@@ -142,54 +170,94 @@ img{max-width:100%;height:auto;display:block}
 .page.active{display:block}
 
 /* ═══════════════════════════════════════════
-   HERO — Largest element, full impact
+   HERO — tight editorial, no wasted space
    ═══════════════════════════════════════════ */
 #hero-section{
   min-height:calc(100dvh - var(--nav-h));
-  display:flex;flex-direction:column;justify-content:flex-end;
-  padding:0 1rem clamp(1.5rem,5vh,3rem);
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  padding:2rem 1.25rem 2rem;
   position:relative;overflow:hidden;
+  gap:0;
 }
 .hero-noise{
   position:absolute;inset:0;
   background:
-    radial-gradient(ellipse 90% 70% at 50% 100%, rgba(220,20,60,.2) 0%, transparent 65%),
-    radial-gradient(ellipse 50% 40% at 80% 10%, rgba(220,20,60,.08) 0%, transparent 55%),
-    radial-gradient(circle at 20% 50%, rgba(220,20,60,.04) 0%, transparent 40%);
+    radial-gradient(ellipse 80% 55% at 50% 105%, rgba(220,20,60,.16) 0%, transparent 65%),
+    radial-gradient(ellipse 35% 25% at 88% 12%, rgba(220,20,60,.05) 0%, transparent 55%);
   pointer-events:none;
 }
 .hero-line{position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--red-a40),transparent)}
-.hero-label{
-  font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--red);
-  margin-bottom:1rem;display:flex;align-items:center;gap:.5rem;
+
+/* ── Top status row ── */
+.hero-status-row{
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;
+  gap:.6rem;
   opacity:0;
+  flex-shrink:0;
 }
-.hero-label::before{content:'';width:18px;height:1px;background:var(--red)}
+.hero-status-badge{
+  display:flex;align-items:center;gap:.45rem;
+  font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--text2);
+  border:1px solid var(--border);
+  border-radius:999px;
+  padding:4px 12px 4px 7px;
+}
+.status-dot{
+  width:5px;height:5px;border-radius:50%;
+  background:var(--ok);box-shadow:0 0 7px rgba(34,197,94,.55);
+  animation:pulse-dot 2.4s ease-in-out infinite;
+  flex-shrink:0;
+}
+.hero-location{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text3)}
+
+/* ── Big editorial title — fills the middle ── */
 .hero-big{
   font-family:var(--font-display);
-  font-size:clamp(3.5rem,14vw,11rem);
-  line-height:.88;letter-spacing:-.01em;
-  margin-bottom:.6rem;opacity:0;
+  font-size:clamp(5rem,18vw,13rem);
+  line-height:.86;letter-spacing:-.015em;
+  flex:1;
+  display:flex;flex-direction:column;justify-content:center;
+  margin:0;opacity:0;
   will-change:transform,opacity;
+  padding:1.5rem 0 1rem;
 }
-.hero-big em{color:var(--red);font-style:normal;display:block}
-.hero-sub{
-  font-size:clamp(.82rem,2.2vw,.95rem);color:var(--text2);
-  max-width:400px;line-height:1.75;margin-bottom:1.5rem;opacity:0;
+.hero-big em{color:var(--red);font-style:normal}
+
+/* ── Bottom meta row ── */
+.hero-meta-row{
+  display:flex;
+  flex-direction:column;
+  gap:1.25rem;
+  padding-top:1.25rem;
+  border-top:1px solid var(--border);
+  opacity:0;
+  flex-shrink:0;
 }
-.hero-cta{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:2rem;opacity:0}
-.hero-stats{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  border-top:1px solid var(--border);opacity:0;
+.hero-desc{
+  font-size:.88rem;color:var(--text2);
+  max-width:420px;line-height:1.75;
 }
-.hs{padding:.8rem .5rem;border-right:1px solid var(--border)}
-.hs:last-child{border-right:none}
-.hs-n{font-family:var(--font-display);font-size:clamp(1.8rem,5vw,2.8rem);color:var(--red);line-height:1}
-.hs-l{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);margin-top:.2rem}
+.hero-bottom-row{
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;
+}
+.hero-cta-group{display:flex;gap:.5rem;flex-wrap:wrap}
+.hero-stat-pair{display:flex;gap:1.75rem}
+.hero-stat-mini{text-align:right}
+.hero-stat-mini .hs-n{font-family:var(--font-display);font-size:clamp(1.5rem,3vw,2rem);color:var(--red);line-height:1}
+.hero-stat-mini .hs-l{font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);margin-top:.15rem}
+
+/* legacy — hide old stats */
+.hero-stats{display:none}
 
 @media(min-width:600px){
-  #hero-section{padding:0 2.5rem clamp(2.5rem,7vh,5rem)}
-  .hs{padding:1rem .75rem}
+  #hero-section{padding:2.5rem 2.5rem 2.5rem}
+}
+@media(min-width:860px){
+  #hero-section{padding:2.5rem 2.5rem 3rem}
+  .hero-meta-row{flex-direction:column;gap:1rem}
 }
 
 /* ═══════════════════════════════════════════
@@ -201,23 +269,25 @@ img{max-width:100%;height:auto;display:block}
 .ticker-inner span::before{content:'✦';color:var(--red);font-size:.4rem;flex-shrink:0}
 
 /* ═══════════════════════════════════════════
-   SHARED SECTION
+   SHARED SECTION — tighter, more deliberate rhythm
    ═══════════════════════════════════════════ */
-.s{padding:clamp(2.5rem,7vh,5rem) 1rem;max-width:1100px;margin:0 auto}
+.s{padding:3.5rem 1.25rem;max-width:1100px;margin:0 auto}
 .s-border{border-top:1px solid var(--border)}
-.eyebrow{font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;color:var(--red);margin-bottom:.85rem;display:flex;align-items:center;gap:.5rem}
-.eyebrow::before{content:'';width:14px;height:1px;background:var(--red);flex-shrink:0}
+.eyebrow{
+  font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--text3);margin-bottom:.4rem;
+  display:flex;align-items:center;gap:.55rem;
+}
+.eyebrow::before{content:'';width:16px;height:1px;background:var(--text3);flex-shrink:0}
 .headline{
   font-family:var(--font-display);
-  font-size:clamp(2.4rem,7.5vw,5.5rem);
-  line-height:1.02;letter-spacing:-.01em;margin-bottom:1.5rem;
+  font-size:clamp(2rem,6vw,4.5rem);
+  line-height:1;letter-spacing:-.01em;margin-bottom:1.25rem;
 }
 .headline .r{color:var(--red)}
-.sub-body{font-size:.92rem;color:var(--text2);line-height:1.8;max-width:550px}
+.sub-body{font-size:.88rem;color:var(--text2);line-height:1.75;max-width:520px}
 
-@media(min-width:600px){
-  .s{padding:clamp(3rem,8vh,5.5rem) 2.5rem}
-}
+@media(min-width:600px){.s{padding:4rem 2.5rem}}
 
 /* ═══════════════════════════════════════════
    BUTTONS
@@ -251,47 +321,55 @@ img{max-width:100%;height:auto;display:block}
 .btn-dng:hover{background:rgba(239,68,68,.08)}
 
 /* ═══════════════════════════════════════════
-   ACHIEVEMENT LIST
+   ACHIEVEMENT LIST — dvdrod numbered project style
    ═══════════════════════════════════════════ */
 .ach-list{border-top:1px solid var(--border)}
 .ach-row{
-  display:grid;grid-template-columns:2.5rem 1fr auto;gap:.75rem;align-items:center;
-  padding:1.2rem 0;border-bottom:1px solid var(--border);
+  display:grid;grid-template-columns:3rem 1fr auto;gap:1rem;align-items:start;
+  padding:1.5rem 0;border-bottom:1px solid var(--border);
   position:relative;overflow:hidden;cursor:default;
 }
 .ach-row::after{
   content:'';position:absolute;inset:0;
-  background:linear-gradient(90deg,var(--red-a12),transparent);
+  background:linear-gradient(90deg,var(--red-a08),transparent 60%);
   transform:translateX(-105%);transition:transform .5s cubic-bezier(.4,0,.2,1);
 }
 .ach-row:hover::after{transform:translateX(0)}
 .ach-row:hover .ar-n{color:var(--red)}
-.ar-n{font-family:var(--font-display);font-size:1.1rem;color:var(--text3);transition:color .3s;position:relative;z-index:1}
-.ar-body{position:relative;z-index:1;min-width:0}
-.ar-yr{font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin-bottom:.2rem}
-.ar-title{font-family:var(--font-display);font-size:clamp(1.1rem,2.8vw,1.45rem);letter-spacing:.02em;line-height:1.15}
-.ar-desc{font-size:.88rem;color:var(--text2);margin-top:.2rem;line-height:1.45}
-.ar-badge{
-  font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
-  background:var(--red);color:#fff;padding:4px 10px;font-weight:500;
-  white-space:nowrap;position:relative;z-index:1;border-radius:2px;
-  flex-shrink:0;
+.ar-n{
+  font-family:var(--font-display);font-size:.95rem;color:var(--border-hi);
+  transition:color .3s;position:relative;z-index:1;
+  padding-top:.2rem;letter-spacing:.04em;
 }
-@media(max-width:420px){.ar-badge{font-size:.65rem;padding:3px 8px}}
+.ar-body{position:relative;z-index:1;min-width:0}
+.ar-yr{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--text3);margin-bottom:.35rem;display:flex;align-items:center;gap:.4rem}
+.ar-yr::before{content:'';width:12px;height:1px;background:var(--red);flex-shrink:0;opacity:.6}
+.ar-title{font-family:var(--font-display);font-size:clamp(1.1rem,2.8vw,1.45rem);letter-spacing:.02em;line-height:1.15}
+.ar-desc{font-size:.85rem;color:var(--text2);margin-top:.3rem;line-height:1.5}
+.ar-badge{
+  font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;
+  background:transparent;color:var(--red);
+  border:1px solid var(--red-a40);
+  padding:4px 10px;font-weight:500;
+  white-space:nowrap;position:relative;z-index:1;border-radius:999px;
+  flex-shrink:0;align-self:start;margin-top:.15rem;
+}
+@media(max-width:420px){.ar-badge{font-size:.6rem;padding:3px 8px}}
 
 /* ═══════════════════════════════════════════
-   CAPS GRID
+   CAPS GRID — dvdrod skills/tags style
    ═══════════════════════════════════════════ */
-.caps{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--border);border-left:1px solid var(--border);margin-top:1.25rem}
+.caps{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:1.25rem}
 .cap{
-  border-right:1px solid var(--border);border-bottom:1px solid var(--border);
-  padding:.8rem .9rem;font-size:.85rem;color:var(--text2);
-  display:flex;align-items:center;gap:.4rem;
-  transition:background .3s,color .3s;
+  font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;
+  padding:5px 12px;
+  color:var(--text2);border:1px solid var(--border);
+  border-radius:999px;
+  transition:background .25s,color .25s,border-color .25s;
+  display:flex;align-items:center;
 }
-.cap::before{content:'—';color:var(--red);flex-shrink:0;font-size:.6rem}
-.cap:hover{background:var(--red-a12);color:var(--text)}
-@media(min-width:600px){.caps{grid-template-columns:repeat(3,1fr)}}
+.cap::before{display:none}
+.cap:hover{background:var(--red-a08);color:var(--text);border-color:var(--red-a40)}
 
 /* ═══════════════════════════════════════════
    ABOUT LAYOUT
@@ -308,29 +386,30 @@ img{max-width:100%;height:auto;display:block}
 }
 
 /* ═══════════════════════════════════════════
-   TEAM GRID
+   TEAM — dvdrod experience list style
    ═══════════════════════════════════════════ */
 .team-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border)}
 .tc{
-  background:var(--bg1);padding:1.1rem .8rem;text-align:center;
-  transition:background .3s,transform .3s;position:relative;overflow:hidden;
+  background:var(--bg1);padding:1.25rem 1rem;
+  transition:background .3s;position:relative;overflow:hidden;
+  display:flex;flex-direction:column;align-items:center;text-align:center;
 }
-.tc::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--red);transform:scaleX(0);transform-origin:center;transition:transform .35s cubic-bezier(.4,0,.2,1)}
+.tc::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .4s cubic-bezier(.4,0,.2,1)}
 .tc:hover{background:var(--bg2)}
 .tc:hover::after{transform:scaleX(1)}
 .tc-av{
-  width:46px;height:46px;border-radius:50%;
+  width:40px;height:40px;border-radius:50%;
   background:var(--bg3);border:1px solid var(--border-hi);
-  margin:0 auto .7rem;display:flex;align-items:center;justify-content:center;
-  font-family:var(--font-display);font-size:1rem;color:var(--red);
-  transition:border-color .3s,box-shadow .3s;
+  margin:0 auto .85rem;display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-display);font-size:.95rem;color:var(--red);
+  transition:border-color .3s;
 }
-.tc:hover .tc-av{border-color:var(--red-a40);box-shadow:0 0 16px var(--red-glow)}
-.tc-name{font-weight:500;font-size:.95rem;margin-bottom:.15rem;line-height:1.3;color:var(--text)}
-.tc-role{font-size:.82rem;color:var(--text2);line-height:1.4;margin-bottom:.4rem}
-.tc-dept{font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--red)}
+.tc:hover .tc-av{border-color:var(--red-a40)}
+.tc-name{font-weight:500;font-size:.95rem;margin-bottom:.2rem;line-height:1.3;color:var(--text)}
+.tc-role{font-size:.8rem;color:var(--text2);line-height:1.4;margin-bottom:.5rem}
+.tc-dept{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text3)}
 @media(min-width:500px){.team-grid{grid-template-columns:repeat(3,1fr)}}
-@media(min-width:800px){.team-grid{grid-template-columns:repeat(4,1fr)}.tc{padding:1.4rem 1.1rem}.tc-av{width:54px;height:54px;font-size:1.15rem}}
+@media(min-width:800px){.team-grid{grid-template-columns:repeat(4,1fr)}.tc{padding:1.5rem 1.25rem;align-items:center;text-align:center}.tc-av{width:48px;height:48px;font-size:1.1rem}}
 
 /* ═══════════════════════════════════════════
    GALLERY
@@ -432,7 +511,8 @@ img{max-width:100%;height:auto;display:block}
   position:sticky;top:var(--nav-h);z-index:100;gap:.6rem;
   box-shadow:0 4px 20px rgba(0,0,0,.2);
 }
-.p-logo{font-family:var(--font-display);font-size:1.25rem;letter-spacing:.08em;color:var(--red);flex-shrink:0}
+.p-logo{font-family:var(--font-display);font-size:1.1rem;letter-spacing:.1em;color:var(--text);flex-shrink:0;display:flex;align-items:center;gap:.4rem}
+.p-logo::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--red);flex-shrink:0}
 .p-tabs{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;flex:1;min-width:0}
 .p-tabs::-webkit-scrollbar{display:none}
 .ptab{
@@ -443,9 +523,9 @@ img{max-width:100%;height:auto;display:block}
 }
 .ptab.on{color:var(--red);border-color:var(--red-a40);background:var(--red-a12)}
 .ptab:hover:not(.on){color:var(--text);border-color:var(--border-hi)}
-.p-user{font-size:.82rem;color:var(--text2);display:flex;align-items:center;gap:.5rem;flex-shrink:0}
+.p-user{font-size:.82rem;color:var(--text2);display:flex;align-items:center;gap:.5rem;flex-shrink:0;white-space:nowrap}
 .p-user strong{color:var(--text)}
-.p-body{max-width:1060px;margin:0 auto;padding:1.5rem 1rem calc(1.5rem + var(--safe-b))}
+.p-body{max-width:960px;margin:0 auto;padding:1.5rem 1rem calc(1.5rem + var(--safe-b))}
 .pane{display:none}
 .pane.on{display:block}
 .pane-head{display:flex;align-items:flex-start;justify-content:space-between;gap:.75rem;flex-wrap:wrap;margin-bottom:1.25rem}
@@ -488,7 +568,7 @@ img{max-width:100%;height:auto;display:block}
 /* ═══════════════════════════════════════════
    QUICK ACTIONS
    ═══════════════════════════════════════════ */
-.qa-wrap{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);max-width:480px;margin:1.25rem 0;border-radius:var(--radius-sm);overflow:hidden}
+.qa-wrap{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);width:100%;max-width:480px;margin:1.25rem 0;border-radius:var(--radius-sm);overflow:hidden}
 @media(max-width:380px){.qa-wrap{grid-template-columns:1fr}}
 .qa{background:var(--bg1);padding:1.4rem 1.1rem;text-align:center;cursor:pointer;transition:background .3s;position:relative;overflow:hidden}
 .qa::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--red);transform:scaleX(0);transform-origin:center;transition:transform .35s cubic-bezier(.4,0,.2,1)}
@@ -504,7 +584,7 @@ img{max-width:100%;height:auto;display:block}
 .my-st{
   background:var(--bg1);border:1px solid var(--border);
   padding:1.2rem 1.25rem;position:relative;margin-top:1.25rem;max-width:480px;
-  border-radius:var(--radius-sm);overflow:hidden;
+  border-radius:var(--radius-sm);overflow:hidden;width:100%;
 }
 .my-st::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--red)}
 
@@ -593,13 +673,15 @@ img{max-width:100%;height:auto;display:block}
 /* ═══════════════════════════════════════════
    FOOTER
    ═══════════════════════════════════════════ */
-footer{border-top:1px solid var(--border);padding:1.75rem 1rem calc(1.75rem + var(--safe-b));text-align:center}
-.ft-logo{font-family:var(--font-display);font-size:1rem;letter-spacing:.08em;color:var(--red);margin-bottom:.4rem}
-.ft-copy{font-size:.64rem;letter-spacing:.08em;color:var(--text3);line-height:1.7}
-.ft-links{display:flex;justify-content:center;gap:1.25rem;margin-top:.7rem;flex-wrap:wrap}
-.ft-links a{font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);transition:color .25s}
+footer{border-top:1px solid var(--border);padding:1.75rem 1.25rem calc(1.75rem + var(--safe-b))}
+.ft-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem}
+.ft-logo{font-family:var(--font-display);font-size:.95rem;letter-spacing:.12em;color:var(--text2);display:flex;align-items:center;gap:.4rem}
+.ft-logo::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--red)}
+.ft-copy{font-size:.6rem;letter-spacing:.06em;color:var(--text3);line-height:1.7}
+.ft-links{display:flex;gap:1.25rem;flex-wrap:wrap}
+.ft-links a{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);transition:color .25s}
 .ft-links a:hover{color:var(--red)}
-@media(min-width:600px){footer{padding:2rem 2.5rem calc(2rem + var(--safe-b))}.ft-logo{font-size:1.1rem}}
+@media(min-width:600px){footer{padding:2rem 2.5rem calc(2rem + var(--safe-b))}}
 
 /* ═══════════════════════════════════════════
    GLOW / UTILITY
@@ -627,16 +709,21 @@ footer{border-top:1px solid var(--border);padding:1.75rem 1rem calc(1.75rem + va
 
 <!-- ═══ NAV ═══ -->
 <nav id="nav">
-  <div class="nav-logo" onclick="goto('home')">GANDIVA RACING</div>
+  <!-- Left: logo -->
+  <div class="nav-logo" onclick="goto('home')">
+    <span class="logo-dot"></span>GR
+  </div>
+  <!-- Centre: pill nav -->
+  <div class="nav-centre">
+    <a href="#" onclick="goto('home');return false" id="nl-home">Home</a>
+    <a href="#" onclick="goto('about');return false" id="nl-about">About</a>
+    <a href="#" onclick="goto('achievements');return false" id="nl-achievements">Results</a>
+    <a href="#" onclick="goto('team');return false" id="nl-team">Team</a>
+    <a href="#" onclick="goto('gallery');return false" id="nl-gallery">Gallery</a>
+    <a href="#" onclick="goto('contact');return false" id="nl-contact">Contact</a>
+  </div>
+  <!-- Right: portal + ham -->
   <div class="nav-right">
-    <div class="nav-links">
-      <a href="#" onclick="goto('home');return false" id="nl-home">Home</a>
-      <a href="#" onclick="goto('about');return false" id="nl-about">About</a>
-      <a href="#" onclick="goto('achievements');return false" id="nl-achievements">Results</a>
-      <a href="#" onclick="goto('team');return false" id="nl-team">Team</a>
-      <a href="#" onclick="goto('gallery');return false" id="nl-gallery">Gallery</a>
-      <a href="#" onclick="goto('contact');return false" id="nl-contact">Contact</a>
-    </div>
     <button class="nav-portal-btn" onclick="goto('portal')">Portal</button>
     <div id="ham" onclick="toggleMenu()"><span></span><span></span><span></span></div>
   </div>
@@ -658,25 +745,37 @@ footer{border-top:1px solid var(--border);padding:1.75rem 1rem calc(1.75rem + va
   <section id="hero-section">
     <div class="hero-noise"></div>
     <div class="hero-line"></div>
-    <div class="hero-label" id="h-label">SKCET · Coimbatore · Est. 2022</div>
-    <h1 class="hero-big" id="h-big">GANDIVA<br><em>RACING.</em></h1>
-    <p class="hero-sub" id="h-sub">SKCET's electric karting team — engineering performance from first principles, one lap at a time.</p>
-    <div class="hero-cta" id="h-cta">
-      <button class="btn btn-red" onclick="goto('achievements')">Our Results</button>
-      <button class="btn btn-outline" onclick="goto('portal')">Team Portal</button>
+
+    <div class="hero-status-row" id="h-label">
+      <div class="hero-status-badge">
+        <span class="status-dot"></span>
+        Student-Led · Engineer-Driven
+      </div>
+      <span class="hero-location">Coimbatore · Est. 2022</span>
     </div>
-    <div class="hero-stats" id="h-stats">
-      <div class="hs"><div class="hs-n">1st</div><div class="hs-l">EKVC 2025</div></div>
-      <div class="hs"><div class="hs-n">AIR–3</div><div class="hs-l">GKDC 2025</div></div>
-      <div class="hs" style="border-right:none"><div class="hs-n">EV</div><div class="hs-l">Powertrain</div></div>
+
+    <h1 class="hero-big" id="h-big">GANDIVA<br><em>RACING.</em></h1>
+
+    <div class="hero-meta-row" id="h-stats">
+      <p class="hero-desc"><strong style="color:var(--text);font-weight:600">100% student-built.</strong> Every wire, weld, and line of code — made by the team. Racing electric karts at the national level from scratch.</p>
+      <div class="hero-bottom-row">
+        <div class="hero-cta-group">
+          <button class="btn btn-red" onclick="goto('achievements')">Our Results</button>
+          <button class="btn btn-outline" onclick="goto('portal')">Team Portal</button>
+        </div>
+        <div class="hero-stat-pair">
+          <div class="hero-stat-mini"><div class="hs-n">1st</div><div class="hs-l">EKVC 2025</div></div>
+          <div class="hero-stat-mini"><div class="hs-n">AIR–3</div><div class="hs-l">GKDC 2025</div></div>
+        </div>
+      </div>
     </div>
   </section>
 
   <div class="ticker-wrap"><div class="ticker-inner" id="ticker">
     <span>EKVC 2025 — 1st Overall</span><span>GKDC 2025 — AIR 3</span><span>Electric Karting</span>
-    <span>SKCET Coimbatore</span><span>Gandiva Racing</span><span>Est. 2022</span>
+    <span>Coimbatore</span><span>Gandiva Racing</span><span>Est. 2022</span>
     <span>EKVC 2025 — 1st Overall</span><span>GKDC 2025 — AIR 3</span><span>Electric Karting</span>
-    <span>SKCET Coimbatore</span><span>Gandiva Racing</span><span>Est. 2022</span>
+    <span>Coimbatore</span><span>Gandiva Racing</span><span>Est. 2022</span>
   </div></div>
 
   <div class="s-border">
@@ -687,7 +786,7 @@ footer{border-top:1px solid var(--border);padding:1.75rem 1rem calc(1.75rem + va
           <h2 class="headline" data-gsap="fade-up" data-delay=".1">Engineering EV<br>performance<br>from scratch.</h2>
         </div>
         <div data-gsap="fade-up" data-delay=".2">
-          <p class="about-p">Gandiva Racing is SKCET's competitive electric karting team. We design, build, and race electric go-karts in national competitions — all student-led, all hands-on.</p>
+          <p class="about-p"><strong style="color:var(--text)">Student-led. Engineer-driven.</strong> Gandiva Racing is an electric karting team based in Coimbatore. We design, build, and race electric go-karts at national competitions — every decision made by students, every component built by hand.</p>
           <p class="about-p">Our team spans electrical systems, chassis fabrication, powertrain tuning, embedded electronics, and aerodynamics.</p>
           <div class="caps">
             <div class="cap">Electrical Systems</div><div class="cap">Chassis & Suspension</div>
@@ -714,12 +813,14 @@ footer{border-top:1px solid var(--border);padding:1.75rem 1rem calc(1.75rem + va
   </div>
 
   <footer>
-    <div class="ft-logo">GANDIVA RACING</div>
-    <div class="ft-copy">© 2025 Sri Krishna College of Engineering & Technology · Coimbatore, TN</div>
-    <div class="ft-links">
-      <a href="#" onclick="goto('contact');return false">Contact</a>
-      <a href="#" onclick="goto('portal');return false">Portal</a>
-      <a href="#" onclick="goto('team');return false">Team</a>
+    <div class="ft-inner">
+      <div class="ft-logo">GANDIVA RACING</div>
+      <div class="ft-copy">© 2025 Gandiva Racing · Coimbatore, Tamil Nadu</div>
+      <div class="ft-links">
+        <a href="#" onclick="goto('contact');return false">Contact</a>
+        <a href="#" onclick="goto('portal');return false">Portal</a>
+        <a href="#" onclick="goto('team');return false">Team</a>
+      </div>
     </div>
   </footer>
 </div>
@@ -731,8 +832,8 @@ footer{border-top:1px solid var(--border);padding:1.75rem 1rem calc(1.75rem + va
     <h1 class="headline" data-gsap="fade-up" data-delay=".1">More than<br>a team.<br><span class="r">A philosophy.</span></h1>
     <div class="about-cols">
       <div data-gsap="fade-up" data-delay=".2">
-        <p class="about-p">Gandiva Racing was founded on a simple belief: that real engineering education happens when you build something that has to survive a racetrack.</p>
-        <p class="about-p">Everything on our kart is designed and fabricated by students. From the BMS to the chassis weld, every decision is ours to make and defend on track.</p>
+        <p class="about-p"><strong style="color:var(--text)">Built entirely by students.</strong> We believe real engineering happens when your work has to survive a racetrack — not just a classroom. Gandiva Racing is student-led from day one.</p>
+        <p class="about-p"><strong style="color:var(--text)">Engineer-driven, end to end.</strong> Every BMS, chassis weld, embedded firmware, and CFD sim is done in-house by our engineering students. No outsourcing, no shortcuts.</p>
         <p class="about-p">We compete under national regulations demanding technical documentation, design scrutineering, and on-track performance — all in the same weekend.</p>
         <div class="caps" style="margin-top:1rem">
           <div class="cap">BMS Design</div><div class="cap">Motor Controller</div>
@@ -743,14 +844,20 @@ footer{border-top:1px solid var(--border);padding:1.75rem 1rem calc(1.75rem + va
         </div>
       </div>
       <div class="stat-stack" data-gsap="fade-up" data-delay=".3">
-        <div class="stat-card"><div class="sc-n">2022</div><div class="sc-l">Founded at SKCET</div></div>
+        <div class="stat-card"><div class="sc-n">2022</div><div class="sc-l">Founded — Coimbatore</div></div>
         <div class="stat-card"><div class="sc-n">1st</div><div class="sc-l">EKVC 2025 overall</div></div>
         <div class="stat-card"><div class="sc-n" id="aboutMemberCount">—</div><div class="sc-l">Active members</div></div>
         <div class="stat-card"><div class="sc-n">EV</div><div class="sc-l">100% electric powertrain</div></div>
       </div>
+      <!-- Student-led callout -->
+      <div style="margin-top:2.5rem;padding:1.5rem;background:var(--red-a08);border:1px solid var(--red-a20);border-radius:var(--radius-md);border-left:3px solid var(--red)" data-gsap="fade-up" data-delay=".4">
+        <div style="font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:.5rem">Our Identity</div>
+        <p style="font-size:1rem;color:var(--text);line-height:1.65;font-weight:500">"Every person on this team is a student who chose to build instead of observe. That's what makes Gandiva Racing different."</p>
+        <p style="font-size:.75rem;color:var(--text2);margin-top:.5rem">Student-led · Engineer-driven · Zero outsourcing</p>
+      </div>
     </div>
   </div>
-  <footer><div class="ft-logo">GANDIVA RACING</div><div class="ft-copy">© 2025 SKCET · Coimbatore</div></footer>
+  <footer><div class="ft-inner"><div class="ft-logo">GANDIVA RACING</div><div class="ft-copy">© 2025 Gandiva Racing · Coimbatore, Tamil Nadu</div></div></footer>
 </div>
 
 <!-- ══════════ ACHIEVEMENTS ══════════ -->
@@ -767,7 +874,7 @@ footer{border-top:1px solid var(--border);padding:1.75rem 1rem calc(1.75rem + va
       <div class="ach-row" data-gsap="fade-up" data-delay=".4"><div class="ar-n">05</div><div class="ar-body"><div class="ar-yr">2023 · Debut</div><div class="ar-title">First Season</div><div class="ar-desc">Top-10 finish + Innovation Award</div></div><span class="ar-badge">🔋 Debut</span></div>
     </div>
   </div>
-  <footer><div class="ft-logo">GANDIVA RACING</div><div class="ft-copy">© 2025 SKCET · Coimbatore</div></footer>
+  <footer><div class="ft-inner"><div class="ft-logo">GANDIVA RACING</div><div class="ft-copy">© 2025 Gandiva Racing · Coimbatore, Tamil Nadu</div></div></footer>
 </div>
 
 <!-- ══════════ TEAM ══════════ -->
@@ -778,23 +885,23 @@ footer{border-top:1px solid var(--border);padding:1.75rem 1rem calc(1.75rem + va
     <p class="sub-body" data-gsap="fade-up" data-delay=".2">Student engineers, each owning a critical piece of the machine.</p>
   </div>
   <div class="team-grid" id="teamGrid"><div style="padding:2rem;color:var(--text2);grid-column:1/-1">Loading…</div></div>
-  <footer style="margin-top:0"><div class="ft-logo">GANDIVA RACING</div><div class="ft-copy">© 2025 SKCET · Coimbatore</div></footer>
+  <footer style="margin-top:0"><div class="ft-inner"><div class="ft-logo">GANDIVA RACING</div><div class="ft-copy">© 2025 Gandiva Racing · Coimbatore</div></div></footer>
 </div>
 
 <!-- ══════════ GALLERY ══════════ -->
 <div id="gallery" class="page">
-  <div class="s" style="padding-bottom:1rem">
+  <div class="s" style="padding-bottom:1rem;text-align:center">
     <div class="eyebrow" data-gsap="fade-up">Behind the Build</div>
     <h1 class="headline" data-gsap="fade-up" data-delay=".1">Gallery</h1>
     <p class="sub-body" data-gsap="fade-up" data-delay=".2">Workshop sessions to race weekends.</p>
-    <div id="galAdminBar" style="display:none;margin-top:.85rem">
+    <div id="galAdminBar" style="display:none;margin-top:.85rem;text-align:center">
       <label class="btn btn-red" style="cursor:pointer">
         + Upload Photos
         <input type="file" id="galUpload" accept="image/*" multiple style="display:none" onchange="handleGalleryUpload(event)">
       </label>
     </div>
   </div>
-  <div class="gal-grid" id="galleryGrid">
+  <div class="gal-grid" id="galleryGrid" style="max-width:1100px;margin:0 auto">
     <div class="gal-ph">📷<span>EKVC 2025</span></div>
     <div class="gal-ph">📷<span>GKDC Podium</span></div>
     <div class="gal-ph">📷<span>Assembly</span></div>
@@ -802,7 +909,7 @@ footer{border-top:1px solid var(--border);padding:1.75rem 1rem calc(1.75rem + va
     <div class="gal-ph">📷<span>Track Test</span></div>
     <div class="gal-ph">📷<span>CFD Review</span></div>
   </div>
-  <footer style="margin-top:1.25rem"><div class="ft-logo">GANDIVA RACING</div><div class="ft-copy">© 2025 SKCET · Coimbatore</div></footer>
+  <footer style="margin-top:1.25rem"><div class="ft-inner"><div class="ft-logo">GANDIVA RACING</div><div class="ft-copy">© 2025 Gandiva Racing · Coimbatore</div></div></footer>
 </div>
 
 <div id="lb">
@@ -837,7 +944,7 @@ footer{border-top:1px solid var(--border);padding:1.75rem 1rem calc(1.75rem + va
       </div>
     </div>
   </div>
-  <footer><div class="ft-logo">GANDIVA RACING</div><div class="ft-copy">© 2025 SKCET · Coimbatore</div></footer>
+  <footer><div class="ft-inner"><div class="ft-logo">GANDIVA RACING</div><div class="ft-copy">© 2025 Gandiva Racing · Coimbatore, Tamil Nadu</div></div></footer>
 </div>
 
 <!-- ══════════ PORTAL ══════════ -->
@@ -872,7 +979,7 @@ footer{border-top:1px solid var(--border);padding:1.75rem 1rem calc(1.75rem + va
   <!-- APP -->
   <div id="p-app">
     <div class="p-topbar">
-      <div style="display:flex;align-items:center;gap:.65rem;min-width:0;overflow:hidden">
+      <div style="display:flex;align-items:center;gap:.65rem;min-width:0;overflow:hidden;flex:1">
         <div class="p-logo">GR</div>
         <div class="p-tabs" id="pTabs">
           <button class="ptab on" onclick="showPane('home',this)">Home</button>
@@ -1735,14 +1842,12 @@ async function goto(id){
   const next=document.getElementById(id);
 
   if(current && current!==next){
-    // Animate out current page
     gsap.to(current,{opacity:0,y:-12,duration:.25,ease:'power2.in',onComplete:()=>{
       PAGES.forEach(p=>{
         document.getElementById(p)?.classList.toggle('active',p===id);
         document.getElementById('nl-'+p)?.classList.toggle('active',p===id);
       });
       window.scrollTo({top:0,behavior:'instant'});
-      // Animate in new page
       gsap.fromTo(next,{opacity:0,y:16},{opacity:1,y:0,duration:.45,ease:'power3.out'});
       setTimeout(()=>{ ScrollTrigger.refresh(); initGsapScrolls(); },80);
     }});
@@ -1802,10 +1907,8 @@ document.querySelectorAll('.mbg').forEach(bg=>{
 // ════════════════════════════════════════════
 function heroAnim(){
   const tl=gsap.timeline({defaults:{ease:'power4.out'}});
-  tl.to('#h-label',{opacity:1,y:0,duration:.8,delay:.2})
+  tl.to('#h-label',{opacity:1,y:0,duration:.8,delay:.15})
     .to('#h-big',{opacity:1,y:0,duration:1.1,ease:'expo.out'},'-=.5')
-    .to('#h-sub',{opacity:1,y:0,duration:.8},'-=.6')
-    .to('#h-cta',{opacity:1,y:0,duration:.7},'-=.5')
     .to('#h-stats',{opacity:1,y:0,duration:.7},'-=.4');
 
   // Parallax noise background
@@ -1879,7 +1982,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   gsap.registerPlugin(ScrollTrigger);
 
   // Set hero elements to initial state
-  gsap.set(['#h-label','#h-big','#h-sub','#h-cta','#h-stats'],{opacity:0,y:28});
+  gsap.set(['#h-label','#h-big','#h-stats'],{opacity:0,y:28});
   heroAnim();
   initGsapScrolls();
   initTicker();
